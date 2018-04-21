@@ -8,8 +8,18 @@ namespace TDD.FizzBuzzKata
 {
     class FizzBuzz
     {
+        public static string PrintFizzBuzz()
+        {
+            var results = new List<string>();
+            for(var i = 1; i <= 100; i++)
+                results.Add(PrintWord(i));
+            return string.Join(" ", results);
+        }
         public static string PrintWord(int i)
         {
+            if (!IsValidNumber(i))
+                throw new ArgumentOutOfRangeException($"entered number is {i}, which should be between 1 to 100");
+
             var flags = WordType.None;
 
             if (IsFizz(i))
@@ -31,6 +41,10 @@ namespace TDD.FizzBuzzKata
             }
         }
 
+        private static bool IsValidNumber(int i)
+        {
+            return i >= 1 && i <= 100;
+        }
         private static bool IsFizz(int i)
         {
             return i % 3 == 0;
