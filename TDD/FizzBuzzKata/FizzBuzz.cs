@@ -47,11 +47,11 @@ namespace TDD.FizzBuzzKata
         }
         private static bool IsFizz(int i)
         {
-            return i % 3 == 0;
+            return i % 3 == 0 || i.ToString().Contains("3");
         }
         private static bool IsBuzz(int i)
         {
-            return i % 5 == 0;
+            return i % 5 == 0 || i.ToString().Contains("5");
         }
     }
 }
