@@ -49,6 +49,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnagramKata\Anagram.cs" />
+    <Compile Include="AnagramKata\AnagramTests.cs" />
+    <Compile Include="AnagramKata\WordPair.cs" />
     <Compile Include="FizzBuzzKata\FizzBuzz.cs" />
     <Compile Include="FizzBuzzKata\FizzBuzzTests.cs" />
     <Compile Include="FizzBuzzKata\WordType.cs" />
