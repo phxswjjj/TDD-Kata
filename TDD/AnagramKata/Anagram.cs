@@ -8,7 +8,7 @@ namespace TDD.AnagramKata
 {
     class Anagram
     {
-        public static List<WordPair> GetResult(IEnumerable<string> sources)
+        public static List<WordPair> GetResult(string destWord, IEnumerable<string> sources)
         {
             var words = from s in sources
                         select new Word(s);
@@ -19,8 +19,7 @@ namespace TDD.AnagramKata
             {
                 if (gWord.Count() > 1)
                 {
-                    var wp = new WordPair(gWord.Key, (from w in gWord select w.Source).ToArray());
-                    results.Add(wp);
+                    
                 }
             }
             return results;
