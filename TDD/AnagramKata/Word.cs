@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TDD.AnagramKata
 {
-    class Word
+    public class Word
     {
         public Word(string w)
         {
