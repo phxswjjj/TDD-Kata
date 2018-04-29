@@ -10,16 +10,16 @@ namespace TDD.AnagramKata
     {
         public static List<WordPair> GetResult(string destWord, IEnumerable<string> sources)
         {
-            var words = from s in sources
-                        select new Word(s);
-            var gWords = words.GroupBy(w => w.Key);
-
+            var compareWord = new Word(destWord);
             var results = new List<WordPair>();
-            foreach (var gWord in gWords)
+            var sourcesCount = sources.Count();
+            for (var i = 0; i < sourcesCount - 1; i++)
             {
-                if (gWord.Count() > 1)
+                for (var j = i + 1; j < sourcesCount; j++)
                 {
-                    
+                    var wp = new WordPair(sources.ElementAt(i), sources.ElementAt(j));
+                    if (wp.Key.Equals(compareWord.Key))
+                        results.Add(wp);
                 }
             }
             return results;

@@ -12,8 +12,9 @@ namespace TDD.AnagramKata
         {
             this.Word1 = w1;
             this.Word2 = w2;
-            
-            this.Key = string.Join("", $"{w1}{w2}".OrderBy(c => c));
+
+            var combinedWord = new Word($"{w1}{w2}");
+            this.Key = combinedWord.Key;
         }
 
         public string Key { get; private set; }

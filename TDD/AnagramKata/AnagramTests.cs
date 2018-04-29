@@ -31,14 +31,16 @@ namespace TDD.AnagramKata
             Assert.ThrowsException<ArgumentNullException>(() => Anagram.GetResult(_destWord, null));
         }
         [DataTestMethod]
-        [DataRow(0, "xyz", "abc,cba,efg,bca,feg,fegg")]
-        [DataRow(1, "abcd", "abc,cba,d")]
-        [DataRow(1, "abcdefg", "abc,cba,defg,efg")]
-        [DataRow(3, "abcefg", "abc,cba,efg,bca")]
+        [DataRow(0, "zya", "abc,cba,efg,bca,feg,fegg")]
+        [DataRow(1, "bcde", "abc,cb,de")]   //abc+de
+        [DataRow(2, "abcdefg", "abcz,cba,defgz,efg")]   //abcz+defgz, abcz+efg
+        [DataRow(3, "gabcef", "abcz,cbza,zefg,bzca")]   //abcz+zefg, cbza+zefg, zefg+bzca
         public void TestLessSource(int matchCount, string destWord, string csv)
         {
             var results = Anagram.GetResult(destWord, csv.Split(','));
             Assert.AreEqual(matchCount, results.Count);
+            foreach (var r in results)
+                TestContext.WriteLine($"{destWord}={r.Word1}+{r.Word2}");
         }
         [TestMethod]
         public void TestResult()
@@ -46,7 +48,9 @@ namespace TDD.AnagramKata
             var results = Anagram.GetResult(_destWord, _sources);
             Assert.AreNotEqual(0, results.Count);
             foreach (var r in results)
-                Console.WriteLine($"{r.Word1} {r.Word2}");
+                TestContext.WriteLine($"{_destWord}={r.Word1}+{r.Word2}");
         }
+
+        public TestContext TestContext { get; set; }
     }
 }
