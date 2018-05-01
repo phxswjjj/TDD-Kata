@@ -21,5 +21,16 @@ namespace TDD.AnagramKata
             var w = new Word(word);
             Assert.AreEqual(exceptKey, w.Key);
         }
+        [DataTestMethod]
+        [DataRow("", 'a', 0)]
+        [DataRow("abbccc", 'x', 0)]
+        [DataRow("abbccc", 'a', 1)]
+        [DataRow("abbccc", 'b', 2)]
+        [DataRow("abbccc", 'c', 3)]
+        public void TestCharFreq(string word, char c, int exceptCharFreq)
+        {
+            var w = new Word(word);
+            Assert.AreEqual(exceptCharFreq, w.GetCharFreq(c));
+        }
     }
 }

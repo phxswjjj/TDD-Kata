@@ -32,7 +32,7 @@ namespace TDD.AnagramKata
         }
         [DataTestMethod]
         [DataRow(0, "zya", "abc,cba,efg,bca,feg,fegg")]
-        [DataRow(1, "bcde", "abc,cb,de")]   //abc+de
+        [DataRow(1, "bcde", "abc,cd,de")]   //abc+de
         [DataRow(2, "abcdefg", "abcz,cba,defgz,efg")]   //abcz+defgz, abcz+efg
         [DataRow(3, "gabcef", "abcz,cbza,zefg,bzca")]   //abcz+zefg, cbza+zefg, zefg+bzca
         public void TestLessSource(int matchCount, string destWord, string csv)
